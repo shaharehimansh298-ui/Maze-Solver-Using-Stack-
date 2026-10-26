@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maze Solver Using Stack</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div>
+        <p class="eyebrow">DATA STRUCTURES PROJECT</p>
+        <h1>Maze Solver <span>DFS</span></h1>
+        <p class="subtitle">
+          Explore Depth-First Search using a stack.
+        </p>
+      </div>
+      <button id="themeBtn" class="secondary">☀ Theme</button>
+    </header>
+
+    <section class="toolbar">
+      <button id="generateBtn">↻ New Maze</button>
+      <button id="solveBtn">▶ Solve Maze</button>
+      <button id="pauseBtn" class="secondary">Ⅱ Pause</button>
+      <button id="resetBtn" class="secondary">Reset</button>
+    </section>
+
+    <section class="settings">
+      <label>
+        Maze size
+        <select id="sizeSelect">
+          <option value="15">15 × 15</option>
+          <option value="21" selected>21 × 21</option>
+          <option value="29">29 × 29</option>
+        </select>
+      </label>
+
+      <label class="speed">
+        Speed
+        <input id="speedRange" type="range"
+               min="10" max="300" value="90">
+        <span id="speedValue">90 ms</span>
+      </label>
+
+      <label>
+        Edit mode
+        <select id="editSelect">
+          <option value="wall">Draw walls</option>
+          <option value="erase">Erase walls</option>
+          <option value="start">Set start</option>
+          <option value="end">Set finish</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="stats">
+      <div class="stat">
+        <span>Visited cells</span>
+        <strong id="visitedCount">0</strong>
+      </div>
+      <div class="stat">
+        <span>Path length</span>
+        <strong id="pathCount">0</strong>
+      </div>
+      <div class="stat">
+        <span>Stack size</span>
+        <strong id="stackCount">0</strong>
+      </div>
+      <div class="stat">
+        <span>Time</span>
+        <strong id="timeCount">0 ms</strong>
+      </div>
+    </section>
+
+    <main class="workspace">
+      <section class="panel maze-panel">
+        <div class="panel-heading">
+          <div>
+            <h2>Maze Grid</h2>
+            <p>Click cells to edit the maze.</p>
+          </div>
+          <span id="status" class="status">Ready</span>
+        </div>
+
+        <div class="maze-wrap">
+          <div id="maze" aria-label="Interactive maze grid"></div>
+        </div>
+
+        <div class="legend">
+          <span><i class="dot start"></i>Start</span>
+          <span><i class="dot finish"></i>Finish</span>
+          <span><i class="dot wall"></i>Wall</span>
+          <span><i class="dot visited"></i>Visited</span>
+          <span><i class="dot path"></i>Final path</span>
+        </div>
+      </section>
+
+      <section class="panel stack-panel">
+        <div class="panel-heading">
+          <div>
+            <h2>Stack (LIFO)</h2>
+            <p>Last In, First Out</p>
+          </div>
+          <span class="stack-badge">TOP ↓</span>
+        </div>
+        <div id="stackList" class="stack-list">
+          <p class="empty">Stack is empty.</p>
+        </div>
+        <div class="algorithm">
+          <h3>DFS Algorithm</h3>
+          <ol>
+            <li>Push the start cell.</li>
+            <li>Pop the top cell.</li>
+            <li>Check its unvisited neighbors.</li>
+            <li>Push valid neighbors onto stack.</li>
+            <li>Stop when the finish is found.</li>
+          </ol>
+        </div>
+      </section>
+    </main>
+
+    <section class="panel log-panel">
+      <div class="panel-heading">
+        <div>
+          <h2>Execution Log</h2>
+          <p>Recent algorithm operations</p>
+        </div>
+        <button id="clearLogBtn" class="secondary">Clear log</button>
+      </div>
+      <div id="log" class="log"></div>
+    </section>
+
+    <footer>
+      Built with HTML, CSS and JavaScript · Stack + DFS
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+  </html>
+  
